@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { popularProducts } from "../Data"
 import Product  from "./Product"
 import axios from "axios"
 import { useState, useEffect } from "react"
@@ -18,7 +17,7 @@ const Products = ({category, filters, sort}) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await axios.get( category ? `http://localhost:5000/api/products?category=${category}` : "http://localhost:5000/api/products")
+                const res = await axios.get( category ? `https://hypegenic-api.herokuapp.com/api/products?category=${category}` : "https://hypegenic-api.herokuapp.com/api/products")
                 setProducts(res.data)
             } catch (err) {}
         }
