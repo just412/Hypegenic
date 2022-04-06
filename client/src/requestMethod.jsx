@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/"
+const BASE_URL = "https://hypegenic-api.herokuapp.com/api/"
 const TOKEN = 
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Q3YjFjNjYwYjRhZDRkNjc3MDQ3YiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NDMwMjUzNDksImV4cCI6MTY0MzI4NDU0OX0.JRYujp__EGNQyAN92ZyVvgmTtt8T1BS0rqQ2qzK4bvU"
 

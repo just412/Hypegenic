@@ -34,7 +34,7 @@ const InfoContainer = styled.div`
     ${mobile({ padding: "10px" })}
 `
 const Title = styled.h1`
-    font-weight: 200;
+    font-weight: 700;
 `
 const Desc = styled.p`
     margin: 20px 0px;
@@ -62,10 +62,11 @@ const FilterTitle = styled.span`
 const FilterColor = styled.div`
     width: 20px;
     height: 20px;
-    border-radius: 50%;
+    border-radius: 18px;
     background-color: ${props => props.color};
     margin: 0px 5px;
     cursor: pointer;
+    border: 3px solid #fff;
 `
 const FilterSize = styled.select`
     margin-left: 10px;
@@ -88,7 +89,7 @@ const Amount = styled.span`
     width: 30px;
     height: 30px;
     border-radius: 10px;
-    border: 1px solid teal;
+    border: 1px solid #888;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,8 +153,14 @@ const SProduct = () => {
                         <Price>$ {product.price}</Price>
                         <FilterContainer>
                             <Filter>
-                                <FilterTitle>Color</FilterTitle>
-                                {product.color?.map(c => <FilterColor color={c} key={c} onClick={() => setColor(c)}/>)}
+                                <FilterTitle>Color&nbsp;&nbsp;:&nbsp;</FilterTitle>
+                                {product.color?.map(c => 
+                                    <FilterColor 
+                                        color={c} 
+                                        key={c} 
+                                        onClick={() => setColor(c)}
+                                        style={color === c ? {boxShadow: "0 0 0 2px #888"} : null}
+                                    />)}
                             </Filter>
 
                             <Filter>

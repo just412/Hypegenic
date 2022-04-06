@@ -5,10 +5,11 @@ import Navbar from '../components/Navbar'
 import styled from 'styled-components'
 import { Add, Remove } from '@material-ui/icons'
 import { mobile } from '../responsive'
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import StripeCheckout from 'react-stripe-checkout'
 import { userRequest } from '../requestMethod'
 import { useNavigate } from 'react-router-dom'
+import { addProduct } from '../redux/CartRedux'
 
 const KEY = process.env.REACT_APP_STRIPE_KEY
 
@@ -149,6 +150,8 @@ const Cart = () => {
     const cart = useSelector(state => state.cart);
     const [stripeToken, setStripeToken] = useState(null)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const [amount, setAmount] = useState()
 
     const onToken = (token) => {
         setStripeToken(token)
@@ -170,6 +173,13 @@ const Cart = () => {
         }
         stripeToken && makeRequest()
     }, [stripeToken, cart.total, navigate])
+
+
+    // const handleCounter = (action) => {
+    //     action === "remove" 
+    //         ? 
+    //         : setAmount(amount + 1)
+    // }
 
     return (
         <Container>
@@ -203,9 +213,9 @@ const Cart = () => {
                                         $ {product.price * product.amount}
                                     </ProductPrice>
                                     <ProductAmountContainer>
-                                        <Add />
+                                        <Add cursor="pointer" />
                                         <ProductAmount>{product.amount}</ProductAmount>
-                                        <Remove />
+                                        <Remove cursor="pointer" />
                                     </ProductAmountContainer>
                                 </PriceDetails>
                             </Product>
